@@ -1,15 +1,12 @@
 @font-face{
-    font-family: Metabadger;
-    src: url(fonts/Metabadger-Font-2021.woff2);
-    src: url(fonts/Metabadger-Font-2021.woff);
-}
-@font-face{
     font-family: Redaction;
     src: url(fonts/Redaction35-Regular.woff2);
+    font-display: swap;
 }
 @font-face{
     font-family: Bellon;
     src: url(fonts/Bellon\ Serifs.woff2);
+    font-display: swap;
 }
 h3{
     font-family: Bellon;
@@ -18,9 +15,9 @@ h3{
 }
 
 html {
-    cursor: url(media/paw.png), auto;
+    cursor: url(cursor/paw.png), auto;
 }
-a:hover, button:hover{cursor: url(media/pointer.png), auto;}
+a:hover, button:hover{cursor: url(cursor/pointer.png), auto;}
 
 a:link { 
     text-decoration: none; 
@@ -47,10 +44,42 @@ body{
     font-size: 20px;
     margin-bottom: 1.5em;
     background-color: rgb(225, 224, 224);
-    background-image: url(media/fur-bg2.png);
+    background-image: url(media/background/fur-bg2.png);
     background-attachment: fixed;
+}
 
-    
+p::selection{
+    color:white;
+    background-color: black;
+}
+h2::selection{
+    color:white;
+    background-color: black;
+}
+h3::selection{
+    color:white;
+    background-color: black;
+}
+strong::selection{
+    color:white;
+    background-color: black;
+}
+i::selection{
+    color:white;
+    background-color: black;
+}
+a::selection{
+    color:white;
+    background-color:blue;
+}
+.blured-info{
+    color: transparent;
+    text-shadow: 0 0 7px #000;
+    transition: 0.2s;
+}
+.blured-info:hover{
+    color: transparent;
+    text-shadow: 0 0 0cap #000;
 }
 
 button{
@@ -95,23 +124,23 @@ h3{
     display: block;
     grid-column: 2/3;
     margin-top:200px;
+    margin-bottom: 50px;
     text-align: center;
     z-index: 998;
     font-size: medium;
-
 }
-
-.picto{
-    height: 50px;
-    width: 50px;
-    margin-bottom: 5px;
+.lang-switch{
+    display: block;
     margin: auto;
+    max-width: 40px; 
+    height: auto;
 }
-.info-grid{
-    grid-row: 4/5;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    align-items: center; 
+.lang-switch img{
+    filter: grayscale(100%);
+    transition: 0.2s;
+}
+.lang-switch:hover img{
+    filter: grayscale(0%);
 }
 
 .title{
@@ -148,7 +177,7 @@ h3{
     font-family: bellon;
 }
 .menu-line:hover::after{
-    content: url(media/selector-badger.gif);
+    content: url(ico/selector-badger.gif);
 }
 
 @media only screen and (max-width: 640px) {
@@ -157,7 +186,7 @@ h3{
         margin: auto;
     }
     #logo{
-        content: url(media/adambadger-title-long.svg);
+        content: url(logo/adambadger-title-long.svg);
         width: 95%;
         height: auto;
         margin-top: 10px;
@@ -176,7 +205,7 @@ h3{
       left: -10px;
       right: -30px;
       grid-template-rows: 0.3fr 0.2fr;
-      height: 210px;
+      height: 190px;
       position:fixed;
       z-index: 999;
       box-shadow: 0 0 10px 30px #fff;
@@ -188,6 +217,20 @@ h3{
     }
     .title{
         margin-bottom: 10px;
+    }
+    #footer{
+        margin-top: 300px;
+    }
+    .expl{
+        margin-top: -60px;
+    }
+    .navlinks{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(4, 35px);
+    }
+    .menu-link{
+        grid-column: 1/2;
     }
 
   }
@@ -231,6 +274,9 @@ h3{
     .main-grid-b{
         grid-template-columns: 1fr;
       }
+    .expl{
+        margin-top: -20px;
+    }
 }
 @media only screen and (min-width: 1200px) {
     .main-grid{
@@ -291,31 +337,14 @@ h3{
 .expl{
     grid-column: 1/-1;
     text-align:left;
-    margin-top: -20px;
     background-color: #fff;
     box-shadow: 0 0 25px 30px #fff;
-    /* outline: thick solid;
-    outline-color: #fff;
-    outline-width: 15px;
-    outline-offset: 5px; */
+
 }
 .expl p{
     max-width: 650px;
 }
 
-#bubble{
-    display: none;
-    position: absolute;
-    width: 60%;
-    top: 270px;
-    left: 270px;
-    z-index: 998;
-    transition: opacity .3s, visibility .3s;
-}
-#pp:hover .bubble{
-    visibility: visible;
-    opacity: 1;
-}
 
 /* Hide Play button + controls on iOS */
    video::-webkit-media-controls {
